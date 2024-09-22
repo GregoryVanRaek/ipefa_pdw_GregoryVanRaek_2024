@@ -18,4 +18,5 @@ __exportStar(require("./api"), exports);
 __exportStar(require("./exception"), exports);
 __exportStar(require("./documentation"), exports);
 __exportStar(require("./config"), exports);
+__exportStar(require("./metadata"), exports);
 //# sourceMappingURL=index.js.map
