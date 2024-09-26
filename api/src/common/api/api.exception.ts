@@ -1,5 +1,5 @@
 // Gestion des erreurs au niveau de l'application
-import {HttpException} from '@nestjs/common';
+import { HttpException } from '@nestjs/common';
 import {ApiCodeResponse} from './api-code.response';
 
 export class ApiException extends HttpException{

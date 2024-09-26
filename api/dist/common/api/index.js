@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./api-code.response"), exports);
 __exportStar(require("./api.exception"), exports);
 __exportStar(require("./api.response"), exports);
+__exportStar(require("./api.interceptor"), exports);
 //# sourceMappingURL=index.js.map
