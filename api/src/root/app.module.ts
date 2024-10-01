@@ -6,11 +6,14 @@ import {configManager} from '@common/config';
 import {APP_GUARD} from '@nestjs/core';
 import { JwtGuard } from '../security/jwt';
 import { SecurityModule } from '../security/security.module';
+import { MemberModule } from '../module/member/member.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(configManager.getTypeOrmConfig()),
-    SecurityModule],
+    SecurityModule,
+    MemberModule
+  ],
   controllers: [AppController],
   providers: [AppService, {
     provide: APP_GUARD, useClass: JwtGuard
