@@ -16,6 +16,7 @@ import {
   MemberPlanNotFoundException,
   MemberPlanUpdateException,
 } from '../exception';
+import { ulid } from 'ulid';
 
 @Injectable()
 export class MemberPlanService
@@ -45,6 +46,7 @@ export class MemberPlanService
           .cumulative(payload.cumulative)
           .nb_training(payload.nb_training)
           .freq_training(payload.freq_training)
+          .member_plan_id(`${ulid()}`)
           .build(),
       );
     } catch (e) {

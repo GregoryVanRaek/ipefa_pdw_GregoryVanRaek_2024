@@ -23,6 +23,7 @@ const utils_1 = require("../utils");
 const model_1 = require("../model");
 const builder_pattern_1 = require("builder-pattern");
 const enum_1 = require("../model/enum");
+const ulid_1 = require("ulid");
 let SecurityService = class SecurityService {
     constructor(repository, tokenService) {
         this.repository = repository;
@@ -50,6 +51,7 @@ let SecurityService = class SecurityService {
                 .username(payload.username)
                 .password(encryptedPassword)
                 .mail(payload.mail)
+                .credential_id(`${(0, ulid_1.ulid)()}`)
                 .build());
         }
         catch (e) {

@@ -1,5 +1,4 @@
 import { BaseEntity, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
-import { ulid } from 'ulid';
 import { Gender } from '../enum';
 import { MemberSubscription } from './member-subscription.entity';
 import { Address } from '@common/model';
@@ -7,7 +6,7 @@ import { Address } from '@common/model';
 
 @Entity()
 export class Member extends BaseEntity {
-  @PrimaryColumn('varchar', {length: 26, default: () => `'${ulid()}'`})
+  @PrimaryColumn('varchar', {length: 26})
   member_id: string;
   @Column({length: 50, nullable: true})
   firstname: string;

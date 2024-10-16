@@ -11,13 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Credential = void 0;
 const typeorm_1 = require("typeorm");
-const ulid_1 = require("ulid");
 const class_transformer_1 = require("class-transformer");
 let Credential = class Credential {
 };
 exports.Credential = Credential;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26, default: () => `'${(0, ulid_1.ulid)()}'` }),
+    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26 }),
     __metadata("design:type", String)
 ], Credential.prototype, "credential_id", void 0);
 __decorate([

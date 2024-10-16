@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Member = void 0;
 const typeorm_1 = require("typeorm");
-const ulid_1 = require("ulid");
 const enum_1 = require("../enum");
 const member_subscription_entity_1 = require("./member-subscription.entity");
 const model_1 = require("../../../../common/model");
@@ -19,7 +18,7 @@ let Member = class Member extends typeorm_1.BaseEntity {
 };
 exports.Member = Member;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26, default: () => `'${(0, ulid_1.ulid)()}'` }),
+    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26 }),
     __metadata("design:type", String)
 ], Member.prototype, "member_id", void 0);
 __decorate([

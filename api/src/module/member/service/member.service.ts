@@ -9,6 +9,7 @@ import {
   MemberListException,
   MemberNotFoundException, MemberUpdateException,
 } from '../exception';
+import { ulid } from 'ulid';
 
 export class MemberService {
   constructor(@InjectRepository(Member) private readonly repository: Repository<Member>) {
@@ -26,6 +27,7 @@ export class MemberService {
         .birthdate(payload.birthdate)
         .address(payload.address)
         .active(payload.active)
+        .member_id(`${ulid()}`)
         .build()
       );
     } catch (e) {

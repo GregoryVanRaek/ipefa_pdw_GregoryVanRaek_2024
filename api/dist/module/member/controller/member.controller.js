@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MemberController = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
-const member_service_1 = require("../service/member.service");
+const service_1 = require("../service");
 const model_1 = require("../model");
 let MemberController = class MemberController {
     constructor(service) {
@@ -76,6 +76,6 @@ exports.MemberController = MemberController = __decorate([
     (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, swagger_1.ApiTags)('Membre'),
     (0, common_1.Controller)('member'),
-    __metadata("design:paramtypes", [member_service_1.MemberService])
+    __metadata("design:paramtypes", [service_1.MemberService])
 ], MemberController);
 //# sourceMappingURL=member.controller.js.map

@@ -19,6 +19,7 @@ import {
 } from '../model';
 import { Builder } from 'builder-pattern';
 import { GetUsernamePossibility } from '../model/enum';
+import { ulid } from 'ulid';
 
 @Injectable()
 export class SecurityService { // assure la persistance et validation du crédential
@@ -60,6 +61,7 @@ export class SecurityService { // assure la persistance et validation du créden
           .username(payload.username)
           .password(encryptedPassword)
           .mail(payload.mail)
+          .credential_id(`${ulid()}`)
           .build(),
       );
     } catch (e) {

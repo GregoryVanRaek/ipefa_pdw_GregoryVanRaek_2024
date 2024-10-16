@@ -1,6 +1,6 @@
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { MemberService } from '../service/member.service';
+import { MemberService } from '../service';
 import { Member, MemberCreatePayload, MemberUpdatePayload } from '../model';
 
 @ApiBearerAuth('access-token')

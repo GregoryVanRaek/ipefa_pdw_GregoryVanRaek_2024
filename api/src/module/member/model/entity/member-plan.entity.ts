@@ -1,10 +1,9 @@
 import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
-import {ulid} from 'ulid';
 import {MemberPlanFreqTrainingType, MemberPlanPaymentType, MemberPlanType} from '../enum';
 
 @Entity()
 export class MemberPlan extends BaseEntity {
-  @PrimaryColumn('varchar', {length: 26, default: () => `'${ulid()}'`})
+  @PrimaryColumn('varchar', {length: 26})
   member_plan_id: string;
   @Column({length: 10, nullable: false, default: MemberPlanType.SUBSCRIPTION})
   type: MemberPlanType;

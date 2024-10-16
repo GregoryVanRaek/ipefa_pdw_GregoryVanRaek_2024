@@ -1,4 +1,4 @@
-import { MemberService } from '../service/member.service';
+import { MemberService } from '../service';
 import { Member, MemberCreatePayload, MemberUpdatePayload } from '../model';
 export declare class MemberController {
     private readonly service;

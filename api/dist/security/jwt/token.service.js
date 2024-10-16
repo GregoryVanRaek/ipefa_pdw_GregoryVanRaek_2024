@@ -22,6 +22,7 @@ const jwt_1 = require("@nestjs/jwt");
 const config_1 = require("../../common/config");
 const builder_pattern_1 = require("builder-pattern");
 const security_exception_1 = require("../security.exception");
+const ulid_1 = require("ulid");
 let TokenService = TokenService_1 = class TokenService {
     constructor(repository, credentialRepository, jwtService) {
         this.repository = repository;
@@ -45,6 +46,7 @@ let TokenService = TokenService_1 = class TokenService {
                 .token(token)
                 .refreshToken(refreshToken)
                 .credential(credential)
+                .token_id(`${(0, ulid_1.ulid)()}`)
                 .build(), ['credential']);
             return this.repository.findOneBy({ token: token });
         }

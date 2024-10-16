@@ -19,6 +19,7 @@ const typeorm_1 = require("typeorm");
 const typeorm_2 = require("@nestjs/typeorm");
 const lodash_1 = require("lodash");
 const exception_1 = require("../exception");
+const ulid_1 = require("ulid");
 let MemberService = class MemberService {
     constructor(repository) {
         this.repository = repository;
@@ -35,6 +36,7 @@ let MemberService = class MemberService {
                 .birthdate(payload.birthdate)
                 .address(payload.address)
                 .active(payload.active)
+                .member_id(`${(0, ulid_1.ulid)()}`)
                 .build());
         }
         catch (e) {

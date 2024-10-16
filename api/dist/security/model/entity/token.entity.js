@@ -12,12 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Token = void 0;
 const typeorm_1 = require("typeorm");
 const credential_entity_1 = require("./credential.entity");
-const ulid_1 = require("ulid");
 let Token = class Token {
 };
 exports.Token = Token;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26, default: () => `'${(0, ulid_1.ulid)()}'` }),
+    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26 }),
     __metadata("design:type", String)
 ], Token.prototype, "token_id", void 0);
 __decorate([

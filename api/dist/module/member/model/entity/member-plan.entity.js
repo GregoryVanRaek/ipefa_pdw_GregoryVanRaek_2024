@@ -11,13 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MemberPlan = void 0;
 const typeorm_1 = require("typeorm");
-const ulid_1 = require("ulid");
 const enum_1 = require("../enum");
 let MemberPlan = class MemberPlan extends typeorm_1.BaseEntity {
 };
 exports.MemberPlan = MemberPlan;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26, default: () => `'${(0, ulid_1.ulid)()}'` }),
+    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26 }),
     __metadata("design:type", String)
 ], MemberPlan.prototype, "member_plan_id", void 0);
 __decorate([

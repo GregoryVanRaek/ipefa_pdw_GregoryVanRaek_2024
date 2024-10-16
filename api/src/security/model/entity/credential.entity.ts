@@ -1,10 +1,9 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
-import { ulid } from 'ulid';
 import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Credential {
-  @PrimaryColumn('varchar', { length:26, default: () => `'${ulid()}'` })
+  @PrimaryColumn('varchar', { length:26 })
   credential_id: string;
 
   @Column({nullable: false, unique: true})

@@ -11,14 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MemberSubscription = void 0;
 const typeorm_1 = require("typeorm");
-const ulid_1 = require("ulid");
 const member_entity_1 = require("./member.entity");
 const member_plan_entity_1 = require("./member-plan.entity");
 let MemberSubscription = class MemberSubscription {
 };
 exports.MemberSubscription = MemberSubscription;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26, default: () => `'${(0, ulid_1.ulid)()}'` }),
+    (0, typeorm_1.PrimaryColumn)('varchar', { length: 26 }),
     __metadata("design:type", String)
 ], MemberSubscription.prototype, "member_subscription_id", void 0);
 __decorate([

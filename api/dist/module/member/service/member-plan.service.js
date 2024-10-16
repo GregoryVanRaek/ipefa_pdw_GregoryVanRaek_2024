@@ -20,6 +20,7 @@ const typeorm_2 = require("typeorm");
 const builder_pattern_1 = require("builder-pattern");
 const lodash_1 = require("lodash");
 const exception_1 = require("../exception");
+const ulid_1 = require("ulid");
 let MemberPlanService = class MemberPlanService {
     constructor(repository) {
         this.repository = repository;
@@ -37,6 +38,7 @@ let MemberPlanService = class MemberPlanService {
                 .cumulative(payload.cumulative)
                 .nb_training(payload.nb_training)
                 .freq_training(payload.freq_training)
+                .member_plan_id(`${(0, ulid_1.ulid)()}`)
                 .build());
         }
         catch (e) {
