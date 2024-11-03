@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type="text"]{
-    @apply border-2 border-gray-200 mt-2 p-2 w-full;
+input[type="text"], input[type="password"] {
+  @apply mt-2 p-2 w-full rounded-xl;
+  border-color: var(--primary-color);
+  border-width: 1px;
+  background-color: var(--secondary-color-color);
+
+  &:focus {
+    border-color: var(--primary-color);
+    border-width: 3px;
+    outline: none;
+  }
 }

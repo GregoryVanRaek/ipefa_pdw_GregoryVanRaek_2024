@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 export class SimpleButtonComponent {
   @Input({required:true}) placeholder!:string;
   @Input({required:true}) type!:string;
+  @Input({required:true}) class!:string;
 }
