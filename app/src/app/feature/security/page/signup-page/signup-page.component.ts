@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CardComponent, InputComponent, SimpleButtonComponent } from '@shared/ui';
 import { RouterLink } from '@angular/router';
 import { dashboardRoutes } from '../../../dashboard';
+import { AppNode } from '../../../../common';
 
 @Component({
   selector: 'app-signup-page',
@@ -18,4 +19,5 @@ import { dashboardRoutes } from '../../../dashboard';
 export class SignupPageComponent {
   title:string = 'Create an account';
   subtitle:string = 'Create an account to access the dashboard';
+  protected readonly AppNode = AppNode;
 }

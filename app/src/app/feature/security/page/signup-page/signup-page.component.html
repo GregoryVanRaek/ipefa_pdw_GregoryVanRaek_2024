@@ -24,11 +24,11 @@
     </div>
     <div class="flex justify-end p-4 gap-4">
       <app-simple-button [class]="'btn btn-success'" [type]="'submit'" [placeholder]="'register'" routerLink="/dashboard"></app-simple-button>
-      <a href="/home" class="btn btn-danger">Cancel</a>
+      <a routerlink="/home" class="btn btn-danger">Cancel</a>
     </div>
   </div>
   <div class="mt-4 text-center">
     <p>Already have an account?</p>
-    <a class="btn" href="/account/signin">Login</a>
+    <a class="btn" routerLink="/account/signin">Login</a>
   </div>
 </div>
