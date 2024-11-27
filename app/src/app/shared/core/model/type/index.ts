@@ -1,5 +1,6 @@
 export type Payload = Object;
 export type Dto = Object;
+
 export interface IsEmpty{
   isEmpty:boolean;
 }

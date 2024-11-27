@@ -1,5 +1,5 @@
 import { effect, EffectRef, Injectable, signal, WritableSignal } from '@angular/core';
-import { Token } from '@shared/api/model';
+import { Token } from 'src/app/shared/api/data/model';
 import { environment } from '../../../../environments';
 import { isNil } from 'lodash';
 
@@ -8,14 +8,15 @@ import { isNil } from 'lodash';
 })
 export class TokenService {
 
-  token: WritableSignal <Token> = signal(this.getToken());
-  private readonly tokenSaveHandler: EffectRef = effect (() => this.handleTokenChange(this.token()));
+  public token$: WritableSignal <Token> = signal(this.getToken()); // signal lancé dès l'injection du service
+  private readonly tokenSaveHandler: EffectRef = effect (() => this.handleTokenChange(this.token$()));
+
 
   public setToken(token: Token ): void {
-    if (token.token.trim().length > 0) {
-      this.token.set(token);
+    if (!isNil(token.token)) {
+      this.token$.set(token);
     } else {
-      this.token.set(this.getEmpty());
+      this.token$.set(this.getEmpty());
       localStorage.removeItem(environment.TOKEN_KEY);
     }
   }
@@ -29,12 +30,16 @@ export class TokenService {
   }
 
   private getToken(): Token {
-    const str = localStorage.getItem(environment.TOKEN_KEY);
+    const str :string | null = localStorage.getItem(environment.TOKEN_KEY);
     return !isNil(str) ? JSON.parse(str) as Token : this.getEmpty();
   }
 
-  private getEmpty(): Token {
-    return {token: '', refreshToken: '', isEmpty: true};
+  public getEmpty(): Token {
+    return {
+      token: '',
+      refreshToken: '',
+      isEmpty: true
+    };
   }
 
 }

@@ -1,4 +1,3 @@
 export * from './service'
-export * from './model'
-export * from './type'
-export * from './enum'
+export * from './data'
+export * from './utils'

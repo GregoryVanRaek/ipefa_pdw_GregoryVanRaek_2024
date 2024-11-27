@@ -1,7 +1,6 @@
 import {
   AddTokenHeaderFn,
   ApiService,
-  ApiURI,
   HttpInterceptorCommonErrorHandlerFn,
   HttpInterceptorHandlerFn,
   Token,
@@ -14,12 +13,13 @@ import { Router } from '@angular/router';
 import { catchError, EMPTY, Observable, switchMap, tap } from 'rxjs';
 import { AppNode } from '../../../common';
 import { ApiResponse } from '@shared/api/api.response';
+import { ApiURI } from '@shared/api/data/enum';
 
 const baseURL: string = environment.apiURL;
 const publicRoute: string[] = [`${baseURL}`, `${baseURL}account/signin`, `${baseURL}account/admin-signin`,
   `${baseURL}account/signup`, `${baseURL}account/refresh`];
 // Main function of httpInterceptor
-export const HttpInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: HttpHandlerFn) => {
+export const httpInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: HttpHandlerFn) => {
 //if route is public
   if (!req.url.startsWith(baseURL) || publicRoute.includes(req.url)) {
     return next(req);
@@ -27,9 +27,10 @@ export const HttpInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: 
 //if route is not public
   const tokenService = inject(TokenService);
   const router: Router = inject(Router);
-  if (!tokenService.token().isEmpty) {
+
+  if (!tokenService.token$().isEmpty) {
     const api: ApiService = inject(ApiService);
-    return next(setTokenInHeader(req, tokenService.token().token))
+    return next(setTokenInHeader(req, tokenService.token$().token))
       .pipe(catchError((err: HttpErrorResponse) => handleError(err, req, next, tokenService,router,api)));
   }
 // We need to redirect because don't have access (no token)
@@ -37,7 +38,9 @@ export const HttpInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: 
 }
 // function for navigate to public part ... this is called many time in the flow
 const redirectToPublic: (router:Router) => Observable<any> = (router:Router) => {
-  router.navigate([AppNode.REDIRECT_TO_PUBLIC]).then();
+  if(!window.location.pathname.startsWith(`/${AppNode.PUBLIC}`)){
+    router.navigate([AppNode.REDIRECT_TO_PUBLIC]).then();
+  }
   return EMPTY;
 }
 // function for set Token in header... we call it twice in the http interceptor flow
@@ -49,11 +52,11 @@ const setTokenInHeader: AddTokenHeaderFn = (req: HttpRequest<any>, token: string
 // Function handle the 401 error
 const handleError: HttpInterceptorHandlerFn = (err: HttpErrorResponse, req: HttpRequest<any>, next: HttpHandlerFn,
                                                tokenService:TokenService,router:Router,api: ApiService): Observable<any> => {
-//ok at this stage, we send a request to api with token, but it's seems expired... so we try to refresh it!
+//ok at this stage, we send a request to api with token, but it seems expired... so we try to refresh it!
   if (err.status === 401 || err.status === 403) {
 //but before refresh it , we must try to see if refresh token exit.. in theory yes because we can be here if token.isEmpty
-    if (!tokenService.token().isEmpty) {
-      return api.post(ApiURI.REFRESH_TOKEN, {refresh: tokenService.token().refreshToken})
+    if (!tokenService.token$().isEmpty) {
+      return api.post(ApiURI.REFRESH_TOKEN, {refresh: tokenService.token$().refreshToken})
         .pipe(
           switchMap((result: ApiResponse) => {
             if (result.result) {
