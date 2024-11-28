@@ -11,5 +11,4 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './security-router.component.scss'
 })
 export class SecurityRouterComponent {
-
 }

@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
   imports: [
     SimpleButtonComponent,
     CardComponent,
+    RouterLink,
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'

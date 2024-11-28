@@ -1,11 +1,11 @@
-import { Component, computed, inject, Signal, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CardComponent } from '@shared/ui';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgForOf } from '@angular/common';
 import { LabelWithParamPipe } from '@shared/ui/text/pipe/label-with-param.pipe';
-import { HttpClient } from '@angular/common/http';
 import { ApiService } from '@shared/api';
+import { SecurityService } from '../../service';
 
 @Component({
   selector: 'app-signin-page',
@@ -26,6 +26,7 @@ export class SigninPageComponent {
 
   constructor(public apiService: ApiService) {
   }
+
 
   // Définition d'un signal pour stocker les erreurs
   private _errors = signal<string[]>([]);

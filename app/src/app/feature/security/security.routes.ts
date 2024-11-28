@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { AppNode } from '../../common';
-import { DashboardRouterComponent } from '../dashboard/router';
-import { DashboardFallBackPageComponent } from '../dashboard/page';
 import { SecurityRouterComponent } from './router';
 import { SecurityFallBackPageComponent } from './page/security-fall-back-page/security-fall-back-page.component';
 
