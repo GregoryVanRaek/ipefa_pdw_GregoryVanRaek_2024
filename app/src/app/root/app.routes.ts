@@ -16,7 +16,7 @@ export const routes: Routes = [
   {
     path: AppNode.REDIRECT_TO_PUBLIC,
     canActivate: [SecurityGuard()],
-    loadChildren: () => import('../feature/security').then(r => r.securityRoutes)
+    loadChildren: () => import('../feature/security').then(r => r.securityRoutes),
   },
   {
     path:AppNode.AUTHENTICATED,

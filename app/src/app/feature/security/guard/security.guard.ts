@@ -14,6 +14,6 @@ export function SecurityGuard(redirectRoute: string = 'signin'): CanActivateFn {
       return router.createUrlTree([AppNode.REDIRECT_TO_AUTHENTICATED]);
     }
 
-    return true;
+    return !isAuthenticated ;
   };
 }
