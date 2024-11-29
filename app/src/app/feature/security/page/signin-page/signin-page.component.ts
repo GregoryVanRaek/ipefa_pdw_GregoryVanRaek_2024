@@ -1,5 +1,5 @@
 import { Component, computed, signal } from '@angular/core';
-import { CardComponent } from '@shared/ui';
+import {CardComponent, LoginCardComponent} from '@shared/ui';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgForOf } from '@angular/common';
@@ -16,6 +16,7 @@ import { SecurityService } from '../../service';
     TranslateModule,
     NgForOf,
     LabelWithParamPipe,
+    LoginCardComponent,
   ],
   templateUrl: './signin-page.component.html',
   styleUrl: './signin-page.component.scss'
