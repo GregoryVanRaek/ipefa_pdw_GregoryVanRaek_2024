@@ -8,6 +8,11 @@ import { ApiInterceptor } from '@common/api';
 
 const bootstrap = async () => {
   const app = await NestFactory.create(AppModule);
+  app.enableCors({ // accepter les requêtes depuis une autre url
+    origin:'http://localhost:4200',
+    methods:'GET,PUT,PATCH,POST,DELETE'
+  });
+
   app.setGlobalPrefix(configManager.getValue(ConfigKey.APP_BASE_URL));
 
   app.useGlobalInterceptors(new ApiInterceptor()); // utiliser l'interceptor pour renvoyer les données sous un bon format api response

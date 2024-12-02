@@ -28,6 +28,9 @@ export class SecurityService {
             isEmpty : false
           })
         }
+        else{
+          console.log(response.result);
+        }
       })
     );
   }

@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgClass, NgForOf } from '@angular/common';
 import { LabelWithParamPipe } from '@shared/ui/text/pipe/label-with-param.pipe';
-import { ApiService } from '@shared/api';
+import { ApiService, SignInPayload } from '@shared/api';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SecurityService } from '../../service';
 
@@ -30,8 +30,6 @@ export class SigninPageComponent implements OnInit {
   title:string = 'Welcome back!';
   subtitle:string = 'Sign in to access the administration';
 
-  securityService :SecurityService = inject(SecurityService);
-
   public formGroup :FormGroup<any> = new FormGroup<any>({});
 
   ngOnInit():void{
@@ -42,13 +40,13 @@ export class SigninPageComponent implements OnInit {
     this.formGroup.valueChanges.subscribe((value:any) => console.log('value', value) )
   }
 
-  constructor(public apiService: ApiService) {
+  constructor(public securityService :SecurityService) {
   }
 
   signIn():void{
-    const value :any = this.formGroup.value;
+    const value :SignInPayload = this.formGroup.value;
     if(this.formGroup.valid){
-      this.securityService.signIn(value);
+      this.securityService.signIn(value).subscribe();
     }
     console.log("ma valeur : ", value);
   }
