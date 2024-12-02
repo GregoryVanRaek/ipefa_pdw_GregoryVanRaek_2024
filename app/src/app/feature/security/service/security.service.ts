@@ -1,11 +1,10 @@
 import { computed, effect, EffectRef, inject, Injectable, signal, Signal, WritableSignal } from '@angular/core';
-import { ApiService, CredentialUtils, SignInPayload, TokenService } from '@shared/api';
+import { ApiService, CredentialUtils, SignInPayload, SignupPayload, TokenService } from '@shared/api';
 import { Router } from '@angular/router';
 import { ApiResponse } from '@shared/api/api.response';
 import { Observable, tap } from 'rxjs';
 import { AppNode, AppRoutes } from '../../../common';
 import { ApiURI } from '@shared/api/data/enum';
-
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +34,9 @@ export class SecurityService {
     );
   }
 
-  // signUp(payload :Payload): Observable<ApiResponse>{
-  //
-  // }
+  signUp(payload :SignupPayload): Observable<ApiResponse>{
+    return this.api.post(ApiURI.SIGN_UP, payload);
+  }
 
   logOut() :void{
     this.tokenService.setToken(this.tokenService.getEmpty());

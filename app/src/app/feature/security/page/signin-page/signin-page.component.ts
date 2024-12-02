@@ -48,9 +48,7 @@ export class SigninPageComponent implements OnInit {
     if(this.formGroup.valid){
       this.securityService.signIn(value).subscribe();
     }
-    console.log("ma valeur : ", value);
   }
-
 
   // Définition d'un signal pour stocker les erreurs
   private _errors = signal<string[]>([]);

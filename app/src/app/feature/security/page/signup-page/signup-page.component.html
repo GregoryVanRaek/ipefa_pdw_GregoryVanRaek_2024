@@ -1,34 +1,48 @@
 <div class="flex items-center flex-col mt-16">
   <div class="container">
-    <div class="flex gap-2 flex-col">
-      <h1>{{ title }}</h1>
-      <p>{{ subtitle }}</p>
-    </div>
-    <div class="flex flex-col p-4 gap-4">
-      <div>
-        <label>Username</label>
-        <app-input [type]="'text'" [placeholder]="'Enter your username'"></app-input>
+
+    <form [formGroup]="formGroup">
+      <div class="flex gap-2 flex-col">
+        <h1>{{ title }}</h1>
+        <p>{{ subtitle }}</p>
       </div>
-      <div>
-        <label>Email</label>
-        <app-input [type]="'text'" [placeholder]="'Enter your email'"></app-input>
+      <div class="flex flex-col p-4 gap-4">
+        <div>
+          <label>Username</label>
+          <input type="text" placeholder="Enter your username" formControlName="username">
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="text" placeholder="Enter your email" formControlName="mail">
+        </div>
+        <div>
+          <label >Password</label>
+          <input type="password" placeholder="Enter your password" formControlName="password">
+        </div>
+        <div>
+          <label>Confirm Password</label>
+          <input type="password" placeholder="Confirm your password" formControlName="confirmPassword">
+
+          @if(passwordMismatchError() && formGroup.get('confirmPassword')?.touched){
+            <p class="error-msg">Password do not match</p>
+          }
+
+        </div>
       </div>
-      <div>
-        <label >Password</label>
-        <app-input [type]="'password'" [placeholder]="'Enter your password'"></app-input>
+      <div class="flex justify-end p-4 gap-4">
+        <button [ngClass]="{'btn-disabled': formGroup.invalid, 'btn-success': !formGroup.invalid}"
+                [disabled]="formGroup.invalid"
+                class="btn cursor-pointer"
+                type="button"
+                routerLink="/dashboard" (click)="register()">register</button>
+        <a routerLink="/home" class="btn btn-danger">Cancel</a>
       </div>
-      <div>
-        <label>Confirm Password</label>
-        <app-input [type]="'password'" [placeholder]="'Confirm your password'"></app-input>
-      </div>
-    </div>
-    <div class="flex justify-end p-4 gap-4">
-      <app-simple-button [class]="'btn btn-success'" [type]="'submit'" [placeholder]="'register'" routerLink="/dashboard"></app-simple-button>
-      <app-simple-button [class]="'btn btn-danger'" [type]="'button'" [placeholder]="'cancel'" routerLink="/home"></app-simple-button>
-    </div>
+    </form>
   </div>
-  <div class="mt-4 text-center">
+
+  <div class="mt-4 text-center flex gap-4 flex-col">
     <p>Already have an account?</p>
     <a class="btn" routerLink="/account/signin">Login</a>
   </div>
+
 </div>

@@ -22,6 +22,7 @@
         <div class="flex justify-end p-4 gap-4">
           <button (click)="signIn()"
                   [ngClass]="{'btn-disabled': formGroup.invalid, 'btn-success': !formGroup.invalid}"
+                  [disabled]="formGroup.invalid"
                   type="button"
                   class="btn cursor-pointer"
                   routerLink="/dashboard">sign in</button>
