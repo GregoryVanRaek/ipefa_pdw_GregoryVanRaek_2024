@@ -1,10 +1,11 @@
-import { Component, computed, signal } from '@angular/core';
-import {CardComponent, LoginCardComponent} from '@shared/ui';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { CardComponent, InputComponent, LoginCardComponent, SimpleButtonComponent } from '@shared/ui';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgForOf } from '@angular/common';
+import { NgClass, NgForOf } from '@angular/common';
 import { LabelWithParamPipe } from '@shared/ui/text/pipe/label-with-param.pipe';
 import { ApiService } from '@shared/api';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SecurityService } from '../../service';
 
 @Component({
@@ -17,15 +18,39 @@ import { SecurityService } from '../../service';
     NgForOf,
     LabelWithParamPipe,
     LoginCardComponent,
+    ReactiveFormsModule,
+    InputComponent,
+    SimpleButtonComponent,
+    NgClass,
   ],
   templateUrl: './signin-page.component.html',
   styleUrl: './signin-page.component.scss'
 })
-export class SigninPageComponent {
+export class SigninPageComponent implements OnInit {
   title:string = 'Welcome back!';
   subtitle:string = 'Sign in to access the administration';
 
+  securityService :SecurityService = inject(SecurityService);
+
+  public formGroup :FormGroup<any> = new FormGroup<any>({});
+
+  ngOnInit():void{
+    this.formGroup = new FormGroup<any>({
+      username : new FormControl('', [Validators.required]),
+      password : new FormControl('', [Validators.required]),
+    })
+    this.formGroup.valueChanges.subscribe((value:any) => console.log('value', value) )
+  }
+
   constructor(public apiService: ApiService) {
+  }
+
+  signIn():void{
+    const value :any = this.formGroup.value;
+    if(this.formGroup.valid){
+      this.securityService.signIn(value);
+    }
+    console.log("ma valeur : ", value);
   }
 
 
@@ -54,4 +79,6 @@ export class SigninPageComponent {
     return this._errors().length;
   }
 
+
 }
+

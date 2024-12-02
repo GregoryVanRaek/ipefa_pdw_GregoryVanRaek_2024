@@ -2,9 +2,33 @@
   <div class="container">
 
     @if(errors().length > 0){
-      <p> {{'security-feature.sign-in-page.error.description' | labelWithParam:{count: errors().length} }}</p>
+      <p> {{'security-feature.sign-in-page.error.description' | labelWithParam:{count: errors().length} }} </p>
     }
 
-    <app-login-card [title]="title" [subTitle]="subtitle"></app-login-card>
+<!--      @if(formGroup.invalid){-->
+<!--        <span class="error">Le formulaire n'est pas valide</span>-->
+<!--      }-->
+
+    <form [formGroup]="formGroup">
+      <div>
+        <div class="flex gap-2 flex-col">
+          <h1>{{ title }}</h1>
+          <p>{{ subtitle }}</p>
+        </div>
+        <div class="flex flex-col p-4 gap-4">
+          <input type="text" placeholder="'Enter your username'" formControlName="username">
+          <input type="password" placeholder="'Enter your password'" formControlName="password">
+        </div>
+        <div class="flex justify-end p-4 gap-4">
+          <button (click)="signIn()"
+                  [ngClass]="{'btn-disabled': formGroup.invalid, 'btn-success': !formGroup.invalid}"
+                  type="button"
+                  class="btn cursor-pointer"
+                  routerLink="/dashboard">sign in</button>
+          <a routerLink="/home" class="btn btn-danger">Cancel</a>
+        </div>
+      </div>
+    </form>
+
   </div>
 </div>

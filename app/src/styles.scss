@@ -9,11 +9,11 @@
   --text-secondary-color: #082F49;
   --cancel-color:#7F1D1D;
   --success-color:#134E4A;
+  --disabled-color:#bae2fd;
 
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color:var(--primary-color);
-  background-color: var(--secondary-color);
 }
 
 .btn {
@@ -58,6 +58,15 @@
   }
 }
 
+.btn-disabled{
+  opacity: 0.3;
+  &:hover {
+    background-color: var(--secondary-color);
+    color: var(--success-color);
+    border-color:var(--success-color);
+  }
+}
+
 h1{
   @apply text-2xl my-8 font-bold uppercase
 }
@@ -81,5 +90,19 @@ footer{
   @apply py-16 text-center;
   background-color: var(--primary-color);
   color: var(--text-primary-color);
+
+}
+
+input[type="text"], input[type="password"] {
+  @apply mt-2 p-2 w-full rounded-xl;
+  border-color: var(--primary-color);
+  border-width: 1px;
+  background-color: var(--secondary-color-color);
+
+  &:focus {
+    border-color: var(--primary-color);
+    border-width: 3px;
+    outline: none;
+  }
 
 }
