@@ -14,6 +14,7 @@ import {
 import { NgClass } from '@angular/common';
 import { SecurityService } from '../../service';
 import { SignupPayload } from '@shared/api';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup-page',
@@ -26,13 +27,12 @@ import { SignupPayload } from '@shared/api';
     FormsModule,
     ReactiveFormsModule,
     NgClass,
+    TranslateModule
   ],
   templateUrl: './signup-page.component.html',
   styleUrl: './signup-page.component.scss'
 })
 export class SignupPageComponent implements OnInit {
-  title:string = 'Create an account';
-  subtitle:string = 'Create an account to access the dashboard';
   protected readonly AppNode = AppNode;
 
   formGroup :FormGroup<any> = new FormGroup({});

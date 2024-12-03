@@ -12,12 +12,12 @@
     <form [formGroup]="formGroup">
       <div>
         <div class="flex gap-2 flex-col">
-          <h1>{{ title }}</h1>
-          <p>{{ subtitle }}</p>
+          <h1>{{ 'security-feature.sign-in-page.title' | translate}}</h1>
+          <p>{{ 'security-feature.sign-in-page.subtitle' | translate}}</p>
         </div>
         <div class="flex flex-col p-4 gap-4">
-          <input type="text" placeholder="'Enter your username'" formControlName="username">
-          <input type="password" placeholder="'Enter your password'" formControlName="password">
+          <input type="text" placeholder="{{'security-feature.sign-in-page.username.placeholder' | translate}}" formControlName="username">
+          <input type="password" placeholder="{{'security-feature.sign-in-page.password.placeholder' | translate}}" formControlName="password">
         </div>
         <div class="flex justify-end p-4 gap-4">
           <button (click)="signIn()"
@@ -25,8 +25,8 @@
                   [disabled]="formGroup.invalid"
                   type="button"
                   class="btn cursor-pointer"
-                  routerLink="/dashboard">sign in</button>
-          <a routerLink="/home" class="btn btn-danger">Cancel</a>
+                  routerLink="/dashboard">{{ 'security-feature.sign-in-input' | translate }}</button>
+          <a routerLink="/home" class="btn btn-danger">{{ 'security-feature.input-cancel' | translate }}</a>
         </div>
       </div>
     </form>

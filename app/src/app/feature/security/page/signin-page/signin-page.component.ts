@@ -1,10 +1,10 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import { CardComponent, InputComponent, LoginCardComponent, SimpleButtonComponent } from '@shared/ui';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgClass, NgForOf } from '@angular/common';
 import { LabelWithParamPipe } from '@shared/ui/text/pipe/label-with-param.pipe';
-import { ApiService, SignInPayload } from '@shared/api';
+import { SignInPayload } from '@shared/api';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SecurityService } from '../../service';
 
@@ -27,10 +27,8 @@ import { SecurityService } from '../../service';
   styleUrl: './signin-page.component.scss'
 })
 export class SigninPageComponent implements OnInit {
-  title:string = 'Welcome back!';
-  subtitle:string = 'Sign in to access the administration';
-
   public formGroup :FormGroup<any> = new FormGroup<any>({});
+
 
   ngOnInit():void{
     this.formGroup = new FormGroup<any>({

@@ -1,8 +1,45 @@
 {
-  "security-feature.sign-in-page.label.username": "Identifiant",
-  "security-feature.sign-in-page.label.password": "Mot de passe",
+  "fallback.page.back-home": "retour vers la page d'accueil",
+  "footer": "2024 Projet1. Tous droits réservés.",
+
+  "home-feature.fallback.page.title": "Cette page n'existe pas sur la route principale",
+  "home-feature.home-page.title": "Bienvenue sur notre site",
+  "home-feature.home-page.explore": "Découvrez nos fonctionnalités et services",
+  "home-feature.home-page.get-started-cta": "Commencer",
+  "home-feature.home-page.subtitle": "Contenu à ajouter",
+  "home-feature.home-page.subtitle-content": "Du nouveau contenu arrive bientôt !",
+  "home-feature.home-page.join-title": "Prêt à nous rejoindre ?",
+  "home-feature.home-page.join-content": "Inscrivez-vous et commencez à explorer nos services dès aujourd'hui!",
+  "home-feature.home-page.sign-up-cta": "S'inscrire maintenant",
+
+  "security-feature.sign-in-page.title": "Ravi de vous revoir !",
+  "security-feature.sign-in-page.subtitle": "Identifiez-vous pour accéder au dashboard",
+  "security-feature.sign-in-page.username.placeholder": "Entrez votre identifiant",
+  "security-feature.sign-in-page.password.placeholder": "Entrez votre Mot de passe",
   "security-feature.sign-in-page.error.username-required": "L'identifiant' est requis",
   "security-feature.sign-in-page.error.password-required": "Le Mot de passe est requis",
-  "security-feature.sign-in-page.error.description": "{count, plural, =0{Vous n'avez pas d'erreur} one{Vous avez une erreur} other{Vous avez {count} erreurs}}."
+  "security-feature.sign-in-page.error.description": "{count, plural, =0{Vous n'avez pas d'erreur} one{Vous avez une erreur} other{Vous avez {count} erreurs}}.",
+  "security-feature.sign-in-input": "se connecter",
+  "security-feature.input-cancel": "annuler",
+  "security-feature.sign-up-title": "Créer un compte",
+  "security-feature.sign-up-subtitle": "Créez votre compte pour accéder au dashboard !",
+  "security-feature.sign-up-page.label.username": "Nom d'utilisateur",
+  "security-feature.sign-up-page.placeholder.username": "Entrer votre nom d'utilisateur",
+  "security-feature.sign-up-page.label.email": "Adresse mail",
+  "security-feature.sign-up-page.placeholder.email": "Entrer votre adresse mail",
+  "security-feature.sign-up-page.label.password": "Mot de passe",
+  "security-feature.sign-up-page.placeholder.password": "Entrer votre mot de passe",
+  "security-feature.sign-up-page.label.confirm-password": "Confirmation du mot de passe",
+  "security-feature.sign-up-page.placeholder.confirm-password": "Confirmer votre mot de passe",
+  "security-feature.sign-up-input": "s'enregister",
+  "security-feature.sign-up.to.login": "Vous avez déjà un compte ?",
+  "security-feature.fallback.page.title": "Cette page n'existe pas sur la route sécurité",
+
+  "dashboard-feature.router-title": "Tableau de bord",
+  "dashboard-feature.router-nav-home": "Accueil",
+  "dashboard-feature.router-nav-logout": "Se déconnecter",
+  "dashboard-feature.header-title": "Mon header",
+  "dashboard-feature.fallback.page.title": "Cette page n'existe pas sur la route du dashboard",
+  "dashboard-feature.home-page": "Bienvenue sur votre tableau de bord"
 }
 

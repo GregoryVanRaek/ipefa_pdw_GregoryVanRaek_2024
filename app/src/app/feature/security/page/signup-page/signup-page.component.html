@@ -3,25 +3,25 @@
 
     <form [formGroup]="formGroup">
       <div class="flex gap-2 flex-col">
-        <h1>{{ title }}</h1>
-        <p>{{ subtitle }}</p>
+        <h1>{{ 'security-feature.sign-up-title' | translate }}</h1>
+        <p>{{ 'security-feature.sign-up-subtitle' | translate }}</p>
       </div>
       <div class="flex flex-col p-4 gap-4">
         <div>
-          <label>Username</label>
-          <input type="text" placeholder="Enter your username" formControlName="username">
+          <label>{{ 'security-feature.sign-up-page.label.username' | translate }}</label>
+          <input type="text" placeholder="{{'security-feature.sign-up-page.placeholder.username' | translate}}" formControlName="username">
         </div>
         <div>
-          <label>Email</label>
-          <input type="text" placeholder="Enter your email" formControlName="mail">
+          <label>{{'security-feature.sign-up-page.label.email' | translate}}</label>
+          <input type="text" placeholder="{{'security-feature.sign-up-page.placeholder.email' | translate}}" formControlName="mail">
         </div>
         <div>
-          <label >Password</label>
-          <input type="password" placeholder="Enter your password" formControlName="password">
+          <label >{{'security-feature.sign-up-page.label.password' | translate}}</label>
+          <input type="password" placeholder="{{'security-feature.sign-up-page.placeholder.password' | translate}}" formControlName="password">
         </div>
         <div>
-          <label>Confirm Password</label>
-          <input type="password" placeholder="Confirm your password" formControlName="confirmPassword">
+          <label>{{'security-feature.sign-up-page.label.confirm-password' | translate}}</label>
+          <input type="password" placeholder="{{'security-feature.sign-up-page.placeholder.confirm-password' | translate}}" formControlName="confirmPassword">
 
           @if(passwordMismatchError() && formGroup.get('confirmPassword')?.touched){
             <p class="error-msg">Password do not match</p>
@@ -34,15 +34,15 @@
                 [disabled]="formGroup.invalid"
                 class="btn cursor-pointer"
                 type="button"
-                routerLink="/dashboard" (click)="register()">register</button>
-        <a routerLink="/home" class="btn btn-danger">Cancel</a>
+                routerLink="/dashboard" (click)="register()">{{ 'security-feature.sign-up-input' | translate }}</button>
+        <a routerLink="/home" class="btn btn-danger">{{ 'security-feature.input-cancel' | translate }}</a>
       </div>
     </form>
   </div>
 
   <div class="mt-4 text-center flex gap-4 flex-col">
-    <p>Already have an account?</p>
-    <a class="btn" routerLink="/account/signin">Login</a>
+    <p>{{ 'security-feature.sign-up.to.login' | translate }}</p>
+    <a class="btn" routerLink="/account/signin">{{ 'security-feature.sign-in-input' | translate }}</a>
   </div>
 
 </div>

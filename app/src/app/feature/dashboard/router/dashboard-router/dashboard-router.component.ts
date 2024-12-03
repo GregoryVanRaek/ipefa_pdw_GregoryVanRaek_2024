@@ -3,6 +3,7 @@ import {RouterLink, RouterOutlet} from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faArrowUpFromBracket, faChartSimple, faHouse, faUser } from '@fortawesome/free-solid-svg-icons';
 import { SecurityService } from '../../../security';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard-router',
@@ -11,6 +12,7 @@ import { SecurityService } from '../../../security';
     RouterOutlet,
     FaIconComponent,
     RouterLink,
+    TranslateModule
   ],
   templateUrl: './dashboard-router.component.html',
   styleUrl: './dashboard-router.component.scss'
