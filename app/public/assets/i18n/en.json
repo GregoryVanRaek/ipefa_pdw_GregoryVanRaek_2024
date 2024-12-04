@@ -14,7 +14,9 @@
 
   "security-feature.sign-in-page.title": "Welcome back!",
   "security-feature.sign-in-page.subtitle": "Sign in to access the administration",
+  "security-feature.sign-in-page.username.label": "Username",
   "security-feature.sign-in-page.username.placeholder": "Enter your username",
+  "security-feature.sign-in-page.password.label": "Password",
   "security-feature.sign-in-page.password.placeholder": "Enter your password",
   "security-feature.sign-in-page.error.username-required": "Username is required",
   "security-feature.sign-in-page.error.password-required": "Password is required",

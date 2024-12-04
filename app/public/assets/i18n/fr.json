@@ -14,7 +14,9 @@
 
   "security-feature.sign-in-page.title": "Ravi de vous revoir !",
   "security-feature.sign-in-page.subtitle": "Identifiez-vous pour accéder au dashboard",
+  "security-feature.sign-in-page.username.label": "Identifiant",
   "security-feature.sign-in-page.username.placeholder": "Entrez votre identifiant",
+  "security-feature.sign-in-page.password.label": "Mot de passe",
   "security-feature.sign-in-page.password.placeholder": "Entrez votre Mot de passe",
   "security-feature.sign-in-page.error.username-required": "L'identifiant' est requis",
   "security-feature.sign-in-page.error.password-required": "Le Mot de passe est requis",

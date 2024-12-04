@@ -9,17 +9,17 @@ export const securityRoutes: Routes = [
     component:SecurityRouterComponent,
     children:[
       {
-          path : '',
-          redirectTo: AppNode.SIGN_IN,
-          pathMatch: 'full'
-      },
-      {
         path:AppNode.SIGN_IN,
         loadComponent: () => import('./page').then(c => c.SigninPageComponent)
       },
       {
         path:AppNode.SIGN_UP,
         loadComponent: () => import('./page').then(c => c.SignupPageComponent)
+      },
+      {
+        path : '',
+        pathMatch: 'full',
+        redirectTo: AppNode.SIGN_IN
       },
       {
         path:'**',

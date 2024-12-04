@@ -1,5 +1,5 @@
-import { Component, computed, OnInit, signal } from '@angular/core';
-import { CardComponent, InputComponent, LoginCardComponent, SimpleButtonComponent } from '@shared/ui';
+import { Component, computed, OnInit, signal, WritableSignal } from '@angular/core';
+import { CardComponent, handleFormError, InputComponent, LoginCardComponent, SimpleButtonComponent } from '@shared/ui';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgClass, NgForOf } from '@angular/common';
@@ -7,6 +7,7 @@ import { LabelWithParamPipe } from '@shared/ui/text/pipe/label-with-param.pipe';
 import { SignInPayload } from '@shared/api';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SecurityService } from '../../service';
+import { FormError } from '@shared/core';
 
 @Component({
   selector: 'app-signin-page',
@@ -27,52 +28,46 @@ import { SecurityService } from '../../service';
   styleUrl: './signin-page.component.scss'
 })
 export class SigninPageComponent implements OnInit {
-  public formGroup :FormGroup<any> = new FormGroup<any>({});
+  public formGroup: FormGroup<any> = new FormGroup<any>({});
+  public errors: WritableSignal<FormError[]> = signal([]);
 
+  constructor(public securityService: SecurityService) {}
 
-  ngOnInit():void{
+  ngOnInit(): void {
     this.formGroup = new FormGroup<any>({
-      username : new FormControl('', [Validators.required]),
-      password : new FormControl('', [Validators.required]),
-    })
-    this.formGroup.valueChanges.subscribe((value:any) => console.log('value', value) )
+      username: new FormControl('', [Validators.required, Validators.minLength(3)],),
+      password: new FormControl('', [Validators.required]),
+    });
+
+    handleFormError(this.formGroup, this.errors);
+
+    console.log(this.errors())
   }
 
-  constructor(public securityService :SecurityService) {
-  }
-
-  signIn():void{
-    const value :SignInPayload = this.formGroup.value;
-    if(this.formGroup.valid){
+  signIn(): void {
+    const value: SignInPayload = this.formGroup.value;
+    if (this.formGroup.valid) {
       this.securityService.signIn(value).subscribe();
+      }
+    }
+
+  // méthode pour récupéré les msg d'erreurs en fonction du controle
+  getErrorMessages(controlName: string): string[] {
+    return this.errors()
+      .filter((error) => error.control === controlName)
+      .map((error) => this.formatErrorMessage(error));
+  }
+
+  // formater l'erreur en fonction de son type
+  private formatErrorMessage(error: FormError): string {
+    switch (error.error) {
+      case 'required':
+        return `${error.control} est requis`;
+      case 'minlength':
+        return `${error.control} doit contenir au moins ${error.value.requiredLength} caractères`;
+      default:
+        return `${error.control} contient une erreur : ${error.error}`;
     }
   }
-
-  // Définition d'un signal pour stocker les erreurs
-  private _errors = signal<string[]>([]);
-
-  // Création d'un computed signal public pour accéder aux erreurs
-  protected errors = computed(() => this._errors());
-
-  // Méthode pour ajouter une erreur
-  addError(error: string) {
-    this._errors.update(current => [...current, error]);
-  }
-
-  // Méthode pour supprimer une erreur
-  removeError(error: string) {
-    this._errors.update(current => current.filter(e => e !== error));
-  }
-
-  // Méthode pour réinitialiser les erreurs
-  clearErrors() {
-    this._errors.set([]);
-  }
-
-  get Count() {
-    return this._errors().length;
-  }
-
-
 }
 
