@@ -29,7 +29,7 @@ import { FormError } from '@shared/core';
 })
 export class SigninPageComponent implements OnInit {
   public formGroup: FormGroup<any> = new FormGroup<any>({});
-  public errors: WritableSignal<FormError[]> = signal([]);
+  public errors$: WritableSignal<FormError[]> = signal([]);
 
   constructor(public securityService: SecurityService) {}
 
@@ -39,9 +39,9 @@ export class SigninPageComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
     });
 
-    handleFormError(this.formGroup, this.errors);
+    handleFormError(this.formGroup, this.errors$);
 
-    console.log(this.errors())
+    console.log(this.errors$())
   }
 
   signIn(): void {
@@ -53,7 +53,7 @@ export class SigninPageComponent implements OnInit {
 
   // méthode pour récupéré les msg d'erreurs en fonction du controle
   getErrorMessages(controlName: string): string[] {
-    return this.errors()
+    return this.errors$()
       .filter((error) => error.control === controlName)
       .map((error) => this.formatErrorMessage(error));
   }
@@ -62,11 +62,11 @@ export class SigninPageComponent implements OnInit {
   private formatErrorMessage(error: FormError): string {
     switch (error.error) {
       case 'required':
-        return `${error.control} est requis`;
+        return `${error.control} is required`;
       case 'minlength':
-        return `${error.control} doit contenir au moins ${error.value.requiredLength} caractères`;
+        return `${error.control} must contains at least ${error.value.requiredLength} character`;
       default:
-        return `${error.control} contient une erreur : ${error.error}`;
+        return `${error.control} contains an error : ${error.error}`;
     }
   }
 }

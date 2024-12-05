@@ -94,7 +94,7 @@ footer{
 
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"] {
   @apply mt-2 p-2 w-full rounded-xl;
   border-color: var(--primary-color);
   border-width: 1px;
