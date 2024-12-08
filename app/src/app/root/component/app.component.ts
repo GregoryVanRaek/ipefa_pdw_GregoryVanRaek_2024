@@ -20,4 +20,12 @@ export class AppComponent implements OnInit {
     this.translate.setDefaultLang(Language.EN);
     this.translate.use(Language.EN);
   }
+
+  changeLanguage(language: string): void {
+    this.translate.use(language);
+  }
+
+
 }
+
+
