@@ -13,7 +13,8 @@ import { SecurityService } from '../../service';
 import { SignupPayload } from '@shared/api';
 import { FormError, handleFormError } from '@shared/ui';
 import { NgClass } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AppNode } from '../../../../common';
 
 @Component({
   selector: 'app-signup-page',
@@ -30,16 +31,18 @@ import { RouterLink } from '@angular/router';
 export class SignupPageComponent implements OnInit {
   public formGroup: FormGroup<any> = new FormGroup({});
   public errors$: WritableSignal<FormError[]> = signal([]);
+  public registerSuccess$ : WritableSignal<boolean> = signal(false)
 
   constructor(
     private securityService: SecurityService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router :Router
   ) {}
 
   ngOnInit(): void {
     this.formGroup = new FormGroup<any>(
       {
-        username: new FormControl('', [Validators.required, Validators.minLength(3), this.nonEmptyValidator()]),
+        username: new FormControl('', [Validators.required, Validators.minLength(5), this.nonEmptyValidator()]),
         mail: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, this.strongPasswordValidator()]),
         confirmPassword: new FormControl('', [Validators.required]),
@@ -63,7 +66,14 @@ export class SignupPageComponent implements OnInit {
   register(): void {
     if (this.formGroup.valid) {
       const payload: SignupPayload = this.formGroup.value;
-      this.securityService.signUp(payload).subscribe();
+      this.securityService.signUp(payload).subscribe({
+        next: () => {
+          this.registerSuccess$.set(true);
+          setTimeout(() => {
+            this.router.navigate([`${AppNode.PUBLIC}/${AppNode.SIGN_IN}`]).then()
+          }, 3000)
+        },
+      });
     }
   }
 

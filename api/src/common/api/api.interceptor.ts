@@ -16,7 +16,7 @@ export class ApiInterceptor implements NestInterceptor { // permet de reformater
       .handle()
       .pipe(
         map((response: any) => {
-          return {code: this.map(path), data: instanceToPlain(response), result: true}
+          return {code: this.map(path), data: instanceToPlain(response), result: true} // instancetoplain utilise la libraire permettant d'interpreter les décorateur (ici permet de ne pas renvoyer le password)
         })
       );
   }

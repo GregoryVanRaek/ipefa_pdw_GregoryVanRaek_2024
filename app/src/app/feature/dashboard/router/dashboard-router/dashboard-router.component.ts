@@ -18,16 +18,17 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './dashboard-router.component.scss'
 })
 export class DashboardRouterComponent {
-  username:string = "Gregory Van Raek";
-  state:string = "Student";
+  constructor(public securityService :SecurityService) {
+  }
 
   protected readonly faUser = faUser;
   protected readonly faChartSimple = faChartSimple;
   protected readonly faHouse = faHouse;
   protected readonly faArrowUpFromBracket = faArrowUpFromBracket;
 
-  constructor(public securityService :SecurityService) {
-  }
+  username:string = "Demo";
+  state:string = "Student";
+
 
   logout():void{
     return this.securityService.logOut();

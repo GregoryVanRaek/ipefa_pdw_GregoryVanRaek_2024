@@ -74,7 +74,7 @@
           }
         </div>
 
-        <div class="flex justify-end gap-4">
+        <div class="flex justify-end gap-4 mb-4">
           <button
             [ngClass]="{ 'btn-disabled': formGroup.invalid, 'btn-success': !formGroup.invalid }"
             [disabled]="formGroup.invalid"
@@ -88,8 +88,15 @@
             {{ 'security-feature.input-cancel' | translate }}
           </a>
         </div>
-      </div>
+        </div>
     </form>
+
+    @if(registerSuccess$()){
+      <div class="success-msg text-center">
+        <p>{{ 'security-feature.sign-up.success' | translate }}</p>
+      </div>
+    }
+
   </div>
 
   <div class="mt-4 text-center flex gap-4 flex-col">

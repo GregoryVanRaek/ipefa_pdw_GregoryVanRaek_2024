@@ -13,23 +13,12 @@ exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
 const swagger_1 = require("@nestjs/swagger");
-const app_swagger_1 = require("./app.swagger");
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
-    getHello() {
-        return this.appService.getHello();
-    }
 };
 exports.AppController = AppController;
-__decorate([
-    (0, swagger_1.ApiOperation)(app_swagger_1.AppControllerHelloWorld),
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getHello", null);
 exports.AppController = AppController = __decorate([
     (0, swagger_1.ApiTags)('Route de base'),
     (0, common_1.Controller)(),

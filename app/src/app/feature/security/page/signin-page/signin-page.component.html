@@ -39,19 +39,35 @@
           }
         </div>
 
+        @if(invalidCredentials$()) {
+          <div class="error-msg my-4">
+            {{ 'security-feature.sign-in-page.error.invalid-credentials' | translate }}
+          </div>
+        }
+
+        @if(loginSucessfull$()){
+          <div class="success-msg my-4">
+            <p>{{ 'security-feature.sign-in-page.login-successful' | translate }}</p>
+          </div>
+        }
+
         <div class="button-group flex justify-end gap-4">
           <button
             (click)="signIn()"
             [ngClass]="{ 'btn-disabled': formGroup.invalid, 'btn-success': !formGroup.invalid }"
             [disabled]="formGroup.invalid"
             class="btn cursor-pointer"
-            routerLink="/dashboard"
+            type="button"
           >
             {{ 'security-feature.sign-in-input' | translate }}
           </button>
           <a routerLink="/home" class="btn btn-danger">
             {{ 'security-feature.input-cancel' | translate }}
           </a>
+        </div>
+        <div class="mt-4 text-center">
+          <p>{{ 'security-feature.login.to.sign-up' | translate }}</p>
+          <a class="btn mt-2" routerLink="/account/signup">{{ 'security-feature.sign-up-input' | translate }}</a>
         </div>
       </div>
     </form>

@@ -23,6 +23,9 @@
   "security-feature.sign-in-page.error.description": "{count, plural, =0{Vous n'avez pas d'erreur} one{Vous avez une erreur} other{Vous avez {count} erreurs}}.",
   "security-feature.sign-in-input": "se connecter",
   "security-feature.sign-in-page.error.username-minlength": "Le nom d'utilisateur doit contenir au moins {{requiredLength}} caractères",
+  "security-feature.sign-in-page.error.invalid-credentials": "Nom d'utilisateur ou mot de passe invalide.",
+  "security-feature.sign-in-page.login-successful": "connexion réussie",
+  "security-feature.sign-up.success": "Inscription réussie ! Veuillez vous connecter",
   "security-feature.input-cancel": "annuler",
   "security-feature.sign-up-title": "Créer un compte",
   "security-feature.sign-up-subtitle": "Créez votre compte pour accéder au dashboard !",
@@ -46,7 +49,7 @@
   "security-feature.sign-up-page.error.password-mismatch": "Les mots de passe ne correspondent pas",
   "security-feature.sign-up-page.error.password-weak": "Le mot de passe doit comporter au moins 8 caractères, inclure des majuscules, des minuscules, un chiffre et un caractère spécial.",
   "security-feature.fallback.page.title": "Cette page n'existe pas sur la route sécurité",
-
+  "security-feature.login.to.sign-up": "Pas encore de compte ?",
   "dashboard-feature.router-title": "Tableau de bord",
   "dashboard-feature.router-nav-home": "Accueil",
   "dashboard-feature.router-nav-logout": "Se déconnecter",

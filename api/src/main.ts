@@ -8,6 +8,7 @@ import { ApiInterceptor } from '@common/api';
 
 const bootstrap = async () => {
   const app = await NestFactory.create(AppModule);
+
   app.enableCors({ // accepter les requêtes depuis une autre url
     origin:'http://localhost:4200',
     methods:'GET,PUT,PATCH,POST,DELETE'
@@ -22,10 +23,12 @@ const bootstrap = async () => {
   }));
 
   swaggerConfiguration.config(app);
+
   app.useGlobalFilters(new HttpExceptionFilter()); // utilise le filtre des exceptions
   await app.listen(parseInt(configManager.getValue(ConfigKey.APP_PORT), 10));
 
 }
+
 bootstrap().then(()=>{
   const logger = new Logger('Main Logger');
   logger.log('Server is started !!')
